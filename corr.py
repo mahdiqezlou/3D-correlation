@@ -13,7 +13,7 @@ def corr_spec(spec, sep_dist_size , sm_l, num_pairs = 10**4, rand_seed=13,savedi
     spec = an array with shape (number of spectra*size of each spectra= total number of pixels  , 5). 
            The second dimention contains (x, y, z, deltaF, sigma_deltaF) for each pixel.
            
-    sep_dis_dim : a list with size of 3 containing the maximum size of x, y, z components of the 3D separation distance. 
+    sep_dist_size : a list with size of 3 containing the maximum size of x, y, z components of the 3D separation distance. 
                   So, they could be from 0 to the box size
     sm_l : The distance between pixels will be coarse with that size. 
     num_pairs = total number of pairs you want to take the summation over
