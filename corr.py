@@ -11,11 +11,11 @@ def corr_spec(spec, sep_dist_size , sm_l, num_pairs = 10**4, rand_seed=13,savedi
 
     Argumentss :
     spec = an array with shape (number of spectra*size of each spectra= total number of pixels  , 5). 
-           The second dimention contains (x, y, z, deltaF, sigma_deltaF) for each pixel.
+           The second dimention contains (x, y, z, deltaF, sigma_deltaF) for each pixel. lengths are in h^-1 cMpc
            
     sep_dist_size : a list with size of 3 containing the maximum size of x, y, z components of the 3D separation distance. 
-                  So, they could be from 0 to the box size
-    sm_l : The distance between pixels will be coarse with that size. 
+                  So, they could be from 0 to the box size. unit h^-1 cMpc
+    sm_l : The distance between pixels will be coarse with that size. unit is in h^-1 cMpc.
     num_pairs = total number of pairs you want to take the summation over
     savefile : Pass a file name to get the output in an hdf5 file
     box_size : a list of size 3 containing the x, y, z length of the simulation/obseration box
