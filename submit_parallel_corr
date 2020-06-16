@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SBATCH --partition=short
+#SBATCH --nodes=2
+#SBATCH --tasks-per-node=8
+#SBATCH --mem-per-cpu=4G
+#SBATCH --cpus-per-task=5
+#SBATCH --job-name="corr_para"
+
+#SBATCH --time=02:00:00
+
+module load mpich
+export OMP_NUM_THREADS=4
+mpirun --map-by ppr:4:socket:pe=4 python run_parallel.py
+
+
