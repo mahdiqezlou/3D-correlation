@@ -4,11 +4,11 @@ import corr
 from latis import Latis
 from mock_latis import Mock_latis
 
-def more_corr(spec_obj, rand_seed_rank , rand_seed, comm, MPI, box_size =120  ,xdim= 30,ydim=30, zdim=30, sm_l=1.5,file_name = 'As_2.24'):
+def more_corr(spec, rand_seed_rank , rand_seed, comm, MPI, box_size =120  ,xdim= 30,ydim=30, zdim=30, sm_l=1.5, output_file = 'correlation'):
     """ Calling for more pairs since memory limit does not let to draw too many pairs at once """
 
-    #m = Mock_latis(spec_file='./spectra/pix_'+file_name+'.dat')
-    m = spec_obj
+    
+    m = spec
 
     zdim_orig = zdim
     zdim = np.around(zdim_orig/sm_l)
@@ -36,7 +36,7 @@ def more_corr(spec_obj, rand_seed_rank , rand_seed, comm, MPI, box_size =120  ,x
     comm.Reduce(stat_pairs, stat_pairs_total, root=0)
     rank = comm.Get_rank()
     if rank ==0 :
-        write_on_file(corr_numerator=corr_numerator_total, weights=weights_total, stat_pairs=stat_pairs_total, sm_l=sm_l, dim=np.array([xdim, ydim, zdim]), rand_seed=rand_seed, file_name=file_name)
+        write_on_file(corr_numerator=corr_numerator_total, weights=weights_total, stat_pairs=stat_pairs_total, sm_l=sm_l, dim=np.array([xdim, ydim, zdim]), rand_seed=rand_seed, file_name=output_file)
 
 
 def write_on_file(corr_numerator, weights, stat_pairs, sm_l, dim, rand_seed, file_name='As_1.29'):
